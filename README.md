@@ -57,6 +57,16 @@ Messager.Default.Subscribe((MessageType m) =>
 });
 ```
 
+### Create multiple messagers
+
+```c#
+Messager default = new Messager();
+Messager messager1 = new Messager("App messager");
+Messager messager2 = new Messager("Log messager");
+
+messager1.Subscribe(() => { /* ... */ });
+```
+
 ### Unsubscribe when you don't need it anymore
 
 ```c#
@@ -66,5 +76,6 @@ void Handle(TestMessage t)
 }
 
 Messager.Default.Subscribe<TestMessage>(Handle);
+// ...
 Messager.Default.Unsubscribe<TestMessage>(Handle);
 ```
